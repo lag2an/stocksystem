@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "fd25fd08-302f-49d3-96e5-04e10dfd1e0c",
+		"name": "StockSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AuthenticationService",
+			"item": [
+				{
+					"name": "Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "messaging-client",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:9000/oauth2/token?grant_type=client_credentials&scope=account:write",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"oauth2",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials"
+								},
+								{
+									"key": "scope",
+									"value": "account:write"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AccountService",
+			"item": [
+				{
+					"name": "GetAccount",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiI2NjAyOTYzMy1mMjQzLTRiYmYtOGY0Ny0yODRkNDRhNzQ2NDQiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJtZXNzYWdpbmctY2xpZW50IiwiYXVkIjoibWVzc2FnaW5nLWNsaWVudCIsIm5iZiI6MTY5MjAwNDM3MCwic2NvcGUiOlsiYWNjb3VudDpyZWFkIl0sImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6OTAwMCIsImV4cCI6MTY5MjAwNDY3MCwiaWF0IjoxNjkyMDA0MzcwfQ.E8IzO3g82OnPL4Y3k17MTX16-iIOE_UrU3PIlo2e1Ir_G11hCV37QOGvIY5puCJ-DsGrQmj_6ueVxEvYGb5M_BCxrey1QBGvbMJpgeFVbp_sI3n0Un-b4wevID-VkGU4wDmAmgQ1aG6PSu5SMffQZde1fAbdUG_fwTykuf-FeYRLoVYLFSQ7SMt62j7vgZc1495acUT04Dh_BuyB1baBBWlQU2cIy4mIjScZhtCNOMdugKI5fjSyjFi8b235cGY3r6FtyI_t6NE7lx-n7IpVI8rIIDBZFEv8FL4xIEbPhcvP3SL9RRNA_YwvTNAnN2RiBnNeoCU1akD-g-a0D_4r9g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/account",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateAccount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n    , \"fullname\": \"asun\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/account",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Topup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/account/topup",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"account",
+								"topup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/account/deduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"account",
+								"deduct"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Portfolio",
+			"item": [
+				{
+					"name": "GetPortfolio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/portfolio",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"portfolio"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscription",
+			"item": [
+				{
+					"name": "Subscribe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"portfolioName\": \"saham3\"\r\n    , \"amount\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/subscription",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Redemption",
+			"item": [
+				{
+					"name": "Redeem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"portfolioName\": \"saham3\"\r\n    , \"amount\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/redemption",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"redemption"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
